@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Airtel Loans – Insufficient Balance</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --text: #111827;
+      --sub: #6b7280;
+      --airtel-red: #E20000;
+      --airtel-darkred: #B30000;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --radius: 18px;
+    }
+
+    body {
+      font-family: 'Inter', Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 20px 12px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 24px 20px 30px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .airtel-header {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .logo-img {
+      width: 120px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      display: block;
+      margin: 0 auto 8px auto;
+      background: #fff;
+    }
+
+    .logo-text {
+      color: #000;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .logo-text .airtel-red {
+      color: var(--airtel-red);
+    }
+
+    .alert-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 28px 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      text-align: center;
+      margin: 20px 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .alert-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--airtel-red);
+      margin-bottom: 20px;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .alert-title i {
+      font-size: 32px;
+      color: var(--airtel-red);
+    }
+
+    .amount {
+      font-size: 42px;
+      font-weight: 800;
+      color: #000;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .message-text {
+      font-size: 16px;
+      color: var(--sub);
+      line-height: 1.6;
+      margin-bottom: 28px;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .message-text strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 16px 20px;
+      border: none;
+      border-radius: 40px;
+      background: linear-gradient(90deg, var(--airtel-red), var(--airtel-darkred));
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(226, 0, 0, 0.3);
+      transition: 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #B30000, #990000);
+      transform: scale(1.02);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 12px;
+      color: #aaa;
+      position: relative;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="airtel-header">
+      <img src="logo.png" alt="Airtel Logo" class="logo-img">
+      <div class="logo-text"><span class="airtel-red">AIRTEL</span> Loans</div>
+    </div>
+
+    <div class="alert-card">
+      <div class="alert-title">
+        <i class="fas fa-exclamation-triangle"></i> Insufficient Balance Alert
+      </div>
+
+      <div class="amount">Minimum K 500</div>
+
+      <div class="message-text">
+        Your Airtel Money balance is too low to qualify for a loan.<br><br>
+        Please deposit at least <strong>K 500</strong> into your Airtel Money wallet, then try again.
+      </div>
+
+      <a href="login.html" class="btn">Try Again After Deposit</a>
+    </div>
+
+    <div class="footer">
+      v2.6.2 (Airtel Loans Zambia) • Airtel Zambia
+    </div>
+  </div>
+</body>
+</html>
